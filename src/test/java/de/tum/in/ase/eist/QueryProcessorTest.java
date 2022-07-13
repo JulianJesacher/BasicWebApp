@@ -38,4 +38,12 @@ class QueryProcessorTest {
 		}
 	}
 
+	@Test
+	void plus(){
+		String actual = queryProcessor.process("what is 3 plus 10");
+		if (!actual.equals("13")) {
+			fail("The QueryProcessor does not know about your name.");
+		}
+	}
+
 }
