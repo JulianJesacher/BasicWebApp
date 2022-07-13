@@ -30,8 +30,8 @@ public class QueryProcessor {
         } else if (query.contains("which") && query.contains("largest")) {
             int colonIndex = query.lastIndexOf(":");
             String substring = query.substring(colonIndex + 1);
-            int[] numbers = Arrays.stream(substring.split(", ")).mapToInt(Integer::parseInt).sorted().toArray();
-            return numbers[0] + "";
+            int[] numbers = Arrays.stream(substring.split(", ")).map(String::trim).mapToInt(Integer::parseInt).sorted().toArray();
+            return numbers[numbers.length-1] + "";
         } else {
             return "";
         }

@@ -56,8 +56,8 @@ class QueryProcessorTest {
 
 	@Test
 	void largest(){
-		String actual = queryProcessor.process("what is 10 multiplied by 13");
-		if (!actual.equals("130")) {
+		String actual = queryProcessor.process("which of the following numbers is the largest: 52, 157");
+		if (!actual.equals("157")) {
 			fail("The QueryProcessor does not know about your name.");
 		}
 	}
