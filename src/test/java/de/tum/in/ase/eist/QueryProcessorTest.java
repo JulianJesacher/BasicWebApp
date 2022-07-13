@@ -62,4 +62,12 @@ class QueryProcessorTest {
 		}
 	}
 
+	@Test
+	void sqaure(){
+		String actual = queryProcessor.process("which of the following numbers is both a square and a cube: 149, 256, 277, 1936");
+		if (!actual.equals("157")) {
+			fail("The QueryProcessor does not know about your name.");
+		}
+	}
+
 }

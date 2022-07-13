@@ -3,6 +3,9 @@ package de.tum.in.ase.eist;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class QueryProcessor {
@@ -21,7 +24,7 @@ public class QueryProcessor {
             int a = Integer.parseInt(query.substring(isIndex + 3, plusIndex - 1));
             int b = Integer.parseInt(query.substring(plusIndex + 5));
             return a + b + "";
-        }else if (query.contains("what is") && query.contains("multiplied")) {
+        } else if (query.contains("what is") && query.contains("multiplied")) {
             int plusIndex = query.indexOf("multiplied by");
             int isIndex = query.indexOf("is");
             int a = Integer.parseInt(query.substring(isIndex + 3, plusIndex - 1));
@@ -31,7 +34,20 @@ public class QueryProcessor {
             int colonIndex = query.lastIndexOf(":");
             String substring = query.substring(colonIndex + 1);
             int[] numbers = Arrays.stream(substring.split(", ")).map(String::trim).mapToInt(Integer::parseInt).sorted().toArray();
-            return numbers[numbers.length-1] + "";
+            return numbers[numbers.length - 1] + "";
+        } else if (query.contains("which") && query.contains("square") && query.contains("cube")) {
+            int colonIndex = query.lastIndexOf(":");
+            String substring = query.substring(colonIndex + 1);
+            int[] numbers = Arrays.stream(substring.split(", ")).map(String::trim).mapToInt(Integer::parseInt).toArray();
+            List<Integer> x = new LinkedList<>();
+            for (int number : numbers) {
+                int a = (int) Math.sqrt(number);
+                int b = (int) Math.pow(number, 1.0 / 3.0);
+                if (Math.pow(a, 2) == number && Math.pow(b, 3) == number) {
+                    x.add(number);
+                }
+            }
+            return x.stream().map(z -> z + "").collect(Collectors.joining(", "));
         } else {
             return "";
         }
