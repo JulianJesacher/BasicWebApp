@@ -21,6 +21,12 @@ public class QueryProcessor {
             int a = Integer.parseInt(query.substring(isIndex + 3, plusIndex - 1));
             int b = Integer.parseInt(query.substring(plusIndex + 5));
             return a + b + "";
+        }else if (query.contains("what is") && query.contains("multiplied")) {
+            int plusIndex = query.indexOf("multiplied by");
+            int isIndex = query.indexOf("is");
+            int a = Integer.parseInt(query.substring(isIndex + 3, plusIndex - 1));
+            int b = Integer.parseInt(query.substring(plusIndex + 14));
+            return a * b + "";
         } else if (query.contains("which") && query.contains("largest")) {
             int colonIndex = query.lastIndexOf(":");
             String substring = query.substring(colonIndex + 1);

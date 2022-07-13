@@ -46,4 +46,20 @@ class QueryProcessorTest {
 		}
 	}
 
+	@Test
+	void mult(){
+		String actual = queryProcessor.process("what is 10 multiplied by 13");
+		if (!actual.equals("130")) {
+			fail("The QueryProcessor does not know about your name.");
+		}
+	}
+
+	@Test
+	void largest(){
+		String actual = queryProcessor.process("what is 10 multiplied by 13");
+		if (!actual.equals("130")) {
+			fail("The QueryProcessor does not know about your name.");
+		}
+	}
+
 }
